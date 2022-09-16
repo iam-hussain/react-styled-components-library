@@ -1,3 +1,5 @@
+const custom = require("./webpack.config.js");
+
 module.exports = {
   stories: [
     "../src/components/**/*.stories.mdx",
@@ -9,4 +11,7 @@ module.exports = {
     "@storybook/addon-interactions",
   ],
   framework: "@storybook/react",
+  core: {
+    builder: "webpack5",
+  },
 };

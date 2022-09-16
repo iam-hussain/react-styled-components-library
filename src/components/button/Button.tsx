@@ -18,8 +18,8 @@ export const Button = ({ label, onClick, ...props }: ButtonProps) => {
   }
 
   return (
-    <StyledButton type="button" {...props} onClick={handleOnClick}>
+    <button type="button" {...props} onClick={handleOnClick}>
       {label}
-    </StyledButton>
+    </button>
   );
 };
