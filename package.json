@@ -1,10 +1,23 @@
 {
   "name": "react-styled-components-library",
   "version": "0.1.0",
-  "private": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.modern.js",
+  "source": "src/index.ts",
+  "scripts": {
+    "build": "microbundle --no-compress --format modern,cjs",
+    "dev": "microbundle watch --no-compress --format modern,cjs",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "test:build": "run-s build",
+    "test:lint": "eslint .",
+    "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
+    "test:watch": "react-scripts test --env=jsdom",
+    "predeploy": "cd example && yarn install && yarn run build"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.11.59",
@@ -12,16 +25,10 @@
     "@types/react-dom": "^18.0.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-scripts": "^5.0.1",
+    "styled-components": "^5.3.5",
     "typescript": "^4.8.3",
     "web-vitals": "^2.1.4"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
   },
   "eslintConfig": {
     "extends": [
@@ -51,6 +58,9 @@
     "@storybook/manager-webpack4": "^6.5.12",
     "@storybook/react": "^6.5.12",
     "@storybook/testing-library": "^0.0.13",
-    "babel-loader": "^8.2.5"
+    "@testing-library/react": "^13.4.0",
+    "@types/styled-components": "^5.1.26",
+    "babel-loader": "^8.2.5",
+    "microbundle": "^0.15.1"
   }
 }
