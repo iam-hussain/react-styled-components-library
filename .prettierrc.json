@@ -1,0 +1,26 @@
+{
+    "trailingComma": "es5",
+    "tabWidth": 4,
+    "semi": false,
+    "singleQuote": false,
+    "jsxSingleQuote": true,
+    "bracketSpacing": true,
+    "jsxBracketSameLine": false,
+    "arrowParens": "always",
+    "printWidth": 140,
+    "quoteProps": "preserve",
+    "overrides": [
+        {
+            "files": "*.jsx",
+            "options": {
+                "printWidth": 120
+            }
+        },
+        {
+            "files": "*.tsx",
+            "options": {
+                "printWidth": 120
+            }
+        }
+    ]
+}
