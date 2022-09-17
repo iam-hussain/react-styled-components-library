@@ -19,6 +19,7 @@
         "prettier-watch": "onchange 'src/**.ts' -- prettier --write {{changed}}"
     },
     "dependencies": {
+        "@rize-finance/storybook-addon-dynamic-theme": "^0.0.5",
         "@storybook/addons": "^6.5.12",
         "@storybook/components": "^6.5.12",
         "@testing-library/jest-dom": "^5.16.5",
@@ -58,6 +59,7 @@
         "@storybook/addon-essentials": "^6.5.12",
         "@storybook/addon-interactions": "^6.5.12",
         "@storybook/addon-links": "^6.5.12",
+        "@storybook/addon-storyshots": "^6.5.12",
         "@storybook/builder-webpack4": "^6.5.12",
         "@storybook/builder-webpack5": "^6.5.12",
         "@storybook/manager-webpack4": "^6.5.12",

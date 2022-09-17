@@ -2,16 +2,13 @@ import { DecoratorFn } from "@storybook/react"
 import { useDarkMode } from "storybook-dark-mode"
 import React from "react"
 import styled, { css, ThemeProvider } from "styled-components"
-import { getTheme, GlobalStyle } from "../src/styles"
-import { themes } from "@storybook/theming"
+import { themes, GlobalStyle } from "../src/styles"
+import { themes as storyBookThemes } from "@storybook/theming"
 
-const theme = {
+const storyBookData = {
     brandTitle: "React Library",
-    colorPrimary: "#0B1F35",
-    colorSecondary: "#EF3124",
-    fontBase: "system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Helvetica, sans-serif",
-    fontCode: "Monaco, Menlo, monospace",
 }
+
 export const parameters = {
     actions: { argTypesRegex: "^on[A-Z].*" },
     controls: {
@@ -22,14 +19,14 @@ export const parameters = {
     },
     darkMode: {
         // Override the default dark theme
-        dark: { ...themes.dark, ...theme },
+        dark: { ...storyBookThemes.dark, ...storyBookData },
         // Override the default light theme
-        light: { ...themes.normal, ...theme },
+        light: { ...storyBookThemes.normal, ...storyBookData },
         current: "light",
     },
 }
 
-const ThemeBlock = styled.div<{ left?: boolean; fill?: boolean }>(
+const ThemeBlock = styled.div(
     ({ left, fill, theme }) =>
         css`
             position: absolute;
@@ -42,7 +39,7 @@ const ThemeBlock = styled.div<{ left?: boolean; fill?: boolean }>(
             bottom: 0;
             overflow: auto;
             padding: 1rem;
-            background: ${theme.color.background};
+            background: ${theme.appBg};
             /*  {
         left: ${left ? 0 : "50vw"};
         right: ${left ? "50vw" : 0};
@@ -50,10 +47,10 @@ const ThemeBlock = styled.div<{ left?: boolean; fill?: boolean }>(
       } */
         `
 )
-export const withTheme: DecoratorFn = (StoryFn, context) => {
+export const withTheme = (StoryFn, context) => {
     // Get values from story parameter first, else fallback to globals
-    const theme = context.parameters.lint || context.globals.lint
-    const storyTheme = useDarkMode() ? getTheme("dark", theme) : getTheme("light", theme)
+    const themeSelected = context.parameters.lint || context.globals.lint
+    const storyTheme = themes[themeSelected] ?? themes.light
     return (
         <ThemeProvider theme={storyTheme}>
             <GlobalStyle />
@@ -68,20 +65,16 @@ export const globalTypes = {
     lint: {
         name: "Lint",
         description: "Global lint for components",
-        defaultValue: "red",
+        defaultValue: "light",
         toolbar: {
-            // The icon for the toolbar item
             title: "Lint",
             color: "red",
-            // Array of options
             items: [
-                { value: "red", icon: "circle", color: "red", title: "red" },
-                { value: "blue", icon: "circle", color: "blue", title: "blue" },
+                { value: "light", title: "Light/Theme" },
+                { value: "dark", title: "Dark/Theme" },
             ],
-            // Property that specifies if the name of the item will be displayed
             name: true,
             dynamicTitle: true,
-            dynamicColor: true,
         },
     },
 }
