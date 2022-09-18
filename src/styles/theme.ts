@@ -1,7 +1,21 @@
 export interface ThemeVars {
     base: "light" | "dark"
     colorPrimary: string
+    colorPrimaryInverse: string
+    colorPrimaryDark: string
+    colorPrimaryLight: string
+    defaultShadow: string
+    primaryShadow: string
+    focusShadow: string
     colorSecondary: string
+    disabledColor: string
+    disabledTextColor: string
+    colorFocus: string
+
+    colorDanger: string
+    colorDangerInverse: string
+    colorDangerDark: string
+    colorDangerLight: string
     appBg: string
     appContentBg: string
     appBorderColor: string
@@ -87,6 +101,8 @@ const color = {
     // Status
     positive: "#66BF3C",
     negative: "#FF4400",
+    negativeDark: "#e63d00",
+    negativeLight: "#ff571a",
     warning: "#E69D00",
     critical: "#FFFFFF",
     defaultText: "#333333",
@@ -145,27 +161,66 @@ const common = {
     fontSizeSmall: "0.8rem",
     fontSizeLabel: "1rem",
     fontSizeHeading: ["1.1rem", "1.3rem", "1.5rem", "1.8rem", "3rem", "4.25rem"].reverse(),
-    space: ["0", "0.25rem", "0.5rem", "1rem", "1.5rem", "2rem", "3rem", "4rem", "8rem", "16rem", "32rem", "48rem", "64rem"],
+    space: [
+        "0",
+        "0.25rem",
+        "0.5rem",
+        "0.75rem",
+        "1rem",
+        "1.25rem",
+        "1.5rem",
+        "2rem",
+        "3rem",
+        "4rem",
+        "8rem",
+        "16rem",
+        "32rem",
+        "48rem",
+        "64rem",
+    ],
     weight: typography.weight,
 }
 
 const light: ThemeVars = {
     ...common,
     base: "light",
-    colorPrimary: "#FF4785",
-    colorSecondary: "#1EA7FD",
+
+    colorPrimary: "#FFB30D",
+    colorPrimaryInverse: color.lightest,
+    colorPrimaryDark: "#f3a600",
+    colorPrimaryLight: "#ffbb27",
+
+    colorSecondary: "#B4BEC9",
+    colorFocus: "#0d59ff",
+
+    disabledColor: "#D9D9D9",
+    disabledTextColor: "#a6a4a4",
+
+    colorDanger: color.negative,
+    colorDangerInverse: color.lightest,
+    colorDangerDark: color.negativeDark,
+    colorDangerLight: color.negativeLight,
+
+    defaultShadow: "#0000002e 1px 1px 2px 1px",
+    primaryShadow: "#ff47852e 1px 1px 2px 1px",
+    focusShadow: "#1EA7FD2e 1px 1px 2px 1px",
+
     appBg: background.app,
     appContentBg: color.lightest,
     appBorderColor: color.border,
     appBorderRadius: 4,
+
     fontBase: typography.fonts.base,
     fontCode: typography.fonts.mono,
+
     textColor: color.darkest,
     textInverseColor: color.lightest,
     textMutedColor: color.dark,
+
     barTextColor: color.mediumDark,
     barSelectedColor: color.secondary,
     barBg: color.lightest,
+
     inputBg: color.lightest,
     inputBorder: color.border,
     inputTextColor: color.darkest,
@@ -174,8 +229,25 @@ const light: ThemeVars = {
 const dark: ThemeVars = {
     ...common,
     base: "dark",
-    colorPrimary: "#FF4785",
-    colorSecondary: "#1EA7FD",
+    colorPrimary: "#FFB30D",
+    colorPrimaryInverse: color.lightest,
+    colorPrimaryDark: "#f3a600",
+    colorPrimaryLight: "#ffbb27",
+
+    colorSecondary: "#B4BEC9",
+    colorFocus: "#0d59ff",
+
+    disabledColor: "#BFBFBF",
+    disabledTextColor: "#4C5958",
+
+    colorDanger: color.negative,
+    colorDangerInverse: color.lightest,
+    colorDangerDark: color.negativeDark,
+    colorDangerLight: color.negativeLight,
+
+    defaultShadow: "#0000002e 1px 1px 2px 1px",
+    primaryShadow: "#ff47852e 1px 1px 2px 1px",
+    focusShadow: "#1EA7FD2e 1px 1px 2px 1px",
     appBg: "#2f2f2f",
     appContentBg: color.darkest,
     appBorderColor: "rgba(255,255,255,.1)",
