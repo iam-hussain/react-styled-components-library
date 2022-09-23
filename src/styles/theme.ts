@@ -243,8 +243,8 @@ const light: ThemeVars = {
     barSelectedColor: color.secondary,
     barBg: color.lightest,
 
-    inputBg: color.light,
-    inputBorder: "#CACACA",
+    inputBg: color.lightest,
+    inputBorder: "#afb6be",
     inputTextColor: color.darkest,
     labelColor: "#3f3f3f",
 }
@@ -293,8 +293,9 @@ const dark: ThemeVars = {
     barTextColor: "#999999",
     barSelectedColor: color.secondary,
     barBg: color.darkest,
-    inputBg: "#3f3f3f",
-    inputBorder: "#878787",
+
+    inputBg: "#3a3c3f",
+    inputBorder: "#5c6363",
     inputTextColor: color.lightest,
     labelColor: "#CACACA",
 }
