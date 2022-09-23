@@ -14,7 +14,8 @@ const Template: ComponentStory<typeof ButtonElement> = (args) => <ButtonElement 
 export const Button = Template.bind({})
 Button.args = {
     label: "Click Me",
-    type: "primary",
+    color: "primary",
+    mode: "filled",
     size: "regular",
     fullWidth: false,
     onClick: () => console.log("Button Clicked"),

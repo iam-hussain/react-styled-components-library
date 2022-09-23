@@ -20,7 +20,8 @@ const buttonConfig = {
 }
 
 export interface StyledButtonProps {
-    type?: "primary" | "secondary" | "tertiary" | "danger" | "link" | "textLink"
+    color?: "primary" | "secondary" | "danger" | "tertiary"
+    mode?: "filled" | "line" | "ghost"
     size?: "small" | "regular" | "large"
     fullWidth?: boolean
 }
@@ -28,7 +29,8 @@ export interface StyledButtonProps {
 export const StyledButton = styled.button.attrs(
     (props: StyledButtonProps): StyledButtonProps => ({
         size: props.size || "regular",
-        type: props.type || "primary",
+        mode: props.mode || "filled",
+        color: props.color || "primary",
         fullWidth: props.fullWidth || false,
     })
 )`
@@ -80,8 +82,10 @@ export const StyledButton = styled.button.attrs(
             }
         }
     }
-    ${({ type, theme }) =>
-        type === "primary" &&
+
+    ${({ color, mode, theme }) =>
+        mode === "filled" &&
+        color === "primary" &&
         css`
             color: ${theme.colorPrimaryInverse};
             background-color: ${theme.colorPrimary};
@@ -100,8 +104,30 @@ export const StyledButton = styled.button.attrs(
             }
         `}
 
-    ${({ type, theme }) =>
-        type === "danger" &&
+    ${({ color, mode, theme }) =>
+        mode === "filled" &&
+        color === "secondary" &&
+        css`
+            color: ${theme.colorSecondaryInverse};
+            background-color: ${theme.colorSecondary};
+            border: 2px solid ${theme.colorSecondary};
+
+            &:not(:disabled) {
+                &:hover {
+                    background-color: ${theme.colorSecondaryLight};
+                    border: 2px solid ${theme.colorSecondaryLight};
+                }
+
+                &:active {
+                    background-color: ${theme.colorSecondaryDark};
+                    border: 2px solid ${theme.colorSecondaryDark};
+                }
+            }
+        `}
+
+    ${({ color, mode, theme }) =>
+        mode === "filled" &&
+        color === "danger" &&
         css`
             color: ${theme.colorDangerInverse};
             background-color: ${theme.colorDanger};
@@ -120,8 +146,32 @@ export const StyledButton = styled.button.attrs(
             }
         `}
 
-    ${({ type, theme }) =>
-        type === "secondary" &&
+    ${({ color, mode, theme }) =>
+        mode === "filled" &&
+        color === "tertiary" &&
+        css`
+            color: ${theme.colorTertiaryInverse};
+            background-color: ${theme.colorTertiary};
+            border: 2px solid ${theme.colorTertiary};
+
+            &:not(:disabled) {
+                &:hover {
+                    background-color: ${theme.colorTertiaryLight};
+                    border: 2px solid ${theme.colorTertiaryLight};
+                }
+
+                &:active {
+                    background-color: ${theme.colorTertiaryDark};
+                    border: 2px solid ${theme.colorTertiaryDark};
+                }
+            }
+        `}
+
+
+
+    ${({ color, mode, theme }) =>
+        mode === "line" &&
+        color === "primary" &&
         css`
             color: ${theme.colorPrimary};
             background-color: transparent;
@@ -139,33 +189,80 @@ export const StyledButton = styled.button.attrs(
                 }
             }
         `}
-     ${({ type, theme }) =>
-        type === "tertiary" &&
+
+    ${({ color, mode, theme }) =>
+        mode === "line" &&
+        color === "secondary" &&
         css`
-            color: ${theme.textColor};
+            color: ${theme.colorSecondary};
             background-color: transparent;
-            border: 2px solid ${theme.textColor};
+            border: 2px solid ${theme.colorSecondary};
 
             &:not(:disabled) {
                 &:hover {
-                    color: ${theme.textMutedColor};
-                    border: 2px solid ${theme.textMutedColor};
+                    color: ${theme.colorSecondaryLight};
+                    border: 2px solid ${theme.colorSecondaryLight};
                 }
 
                 &:active {
-                    color: ${theme.textMutedColor};
-                    border: 2px solid ${theme.textMutedColor};
+                    color: ${theme.colorSecondaryDark};
+                    border: 2px solid ${theme.colorSecondaryDark};
                 }
             }
         `}
 
-    ${({ type, theme }) =>
-        type === "link" &&
+    ${({ color, mode, theme }) =>
+        mode === "line" &&
+        color === "danger" &&
+        css`
+            color: ${theme.colorDanger};
+            background-color: transparent;
+            border: 2px solid ${theme.colorDanger};
+
+            &:not(:disabled) {
+                &:hover {
+                    color: ${theme.colorDangerLight};
+                    border: 2px solid ${theme.colorDangerLight};
+                }
+
+                &:active {
+                    color: ${theme.colorDangerDark};
+                    border: 2px solid ${theme.colorDangerDark};
+                }
+            }
+        `}
+
+    ${({ color, mode, theme }) =>
+        mode === "line" &&
+        color === "tertiary" &&
+        css`
+            color: ${theme.colorTertiary};
+            background-color: transparent;
+            border: 2px solid ${theme.colorTertiary};
+
+            &:not(:disabled) {
+                &:hover {
+                    color: ${theme.colorTertiaryLight};
+                    border: 2px solid ${theme.colorTertiaryLight};
+                }
+
+                &:active {
+                    color: ${theme.colorTertiaryDark};
+                    border: 2px solid ${theme.colorTertiaryDark};
+                }
+            }
+        `}
+
+
+    ${({ color, mode, theme }) =>
+        mode === "ghost" &&
+        color === "primary" &&
         css`
             color: ${theme.colorPrimary};
             background-color: transparent;
-            border: 0;
+            border: 0px;
             box-shadow: none;
+
             &:not(:disabled) {
                 &:hover {
                     color: ${theme.colorPrimaryLight};
@@ -177,20 +274,62 @@ export const StyledButton = styled.button.attrs(
             }
         `}
 
-    ${({ type, theme }) =>
-        type === "textLink" &&
+    ${({ color, mode, theme }) =>
+        mode === "ghost" &&
+        color === "secondary" &&
         css`
-            color: ${theme.textColor};
-            background-color: ${theme.appContentBg};
-            border: 0;
+            color: ${theme.colorSecondary};
+            background-color: transparent;
+            border: 0px;
             box-shadow: none;
+
             &:not(:disabled) {
                 &:hover {
-                    color: ${theme.textMutedColor};
+                    color: ${theme.colorSecondaryLight};
                 }
 
                 &:active {
-                    color: ${theme.textMutedColor};
+                    color: ${theme.colorSecondaryDark};
+                }
+            }
+        `}
+
+    ${({ color, mode, theme }) =>
+        mode === "ghost" &&
+        color === "danger" &&
+        css`
+            color: ${theme.colorDanger};
+            background-color: transparent;
+            border: 0px;
+            box-shadow: none;
+
+            &:not(:disabled) {
+                &:hover {
+                    color: ${theme.colorDangerLight};
+                }
+
+                &:active {
+                    color: ${theme.colorDangerDark};
+                }
+            }
+        `}
+
+    ${({ color, mode, theme }) =>
+        mode === "ghost" &&
+        color === "tertiary" &&
+        css`
+            color: ${theme.colorTertiary};
+            background-color: transparent;
+            border: 0px;
+            box-shadow: none;
+
+            &:not(:disabled) {
+                &:hover {
+                    color: ${theme.colorTertiaryLight};
+                }
+
+                &:active {
+                    color: ${theme.colorTertiaryDark};
                 }
             }
         `}

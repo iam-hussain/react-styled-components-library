@@ -1,13 +1,24 @@
 export interface ThemeVars {
     base: "light" | "dark"
+
     colorPrimary: string
     colorPrimaryInverse: string
     colorPrimaryDark: string
     colorPrimaryLight: string
+
+    colorSecondary: string
+    colorSecondaryInverse: string
+    colorSecondaryDark: string
+    colorSecondaryLight: string
+
+    colorTertiary: string
+    colorTertiaryInverse: string
+    colorTertiaryDark: string
+    colorTertiaryLight: string
+
     defaultShadow: string
     primaryShadow: string
     focusShadow: string
-    colorSecondary: string
     disabledColor: string
     disabledTextColor: string
     colorFocus: string
@@ -194,17 +205,25 @@ const light: ThemeVars = {
     colorPrimaryLight: "#ffbb27",
 
     colorSecondary: "#1BA0B3",
-    colorFocus: "#0d59ff",
+    colorSecondaryInverse: color.lightest,
+    colorSecondaryDark: "#188c9d",
+    colorSecondaryLight: "#1eb4c9",
 
-    disabledColor: "#c3cbd4",
-    disabledTextColor: "#96a4b4",
+    colorTertiary: "#747E7E",
+    colorTertiaryInverse: color.lightest,
+    colorTertiaryDark: "#5c6363",
+    colorTertiaryLight: "#8e9797",
+
+    colorFocus: "#0d59ff",
+    disabledColor: "#e1e5e9",
+    disabledTextColor: "#b4bec9",
 
     colorDanger: color.negative,
     colorDangerInverse: color.lightest,
     colorDangerDark: color.negativeDark,
     colorDangerLight: color.negativeLight,
 
-    defaultShadow: "#0000002e 1px 1px 2px 1px",
+    defaultShadow: "#0000002a -2px 2px 6px 1px",
     primaryShadow: "#ff47852e 1px 1px 2px 1px",
     focusShadow: "#1EA7FD2e 1px 1px 2px 1px",
 
@@ -234,13 +253,21 @@ const dark: ThemeVars = {
     ...common,
     base: "dark",
     colorPrimary: "#FFB30D",
-    colorPrimaryInverse: color.lightest,
+    colorPrimaryInverse: color.darker,
     colorPrimaryDark: "#f3a600",
     colorPrimaryLight: "#ffbb27",
 
     colorSecondary: "#1AE3FF",
-    colorFocus: "#0d59ff",
+    colorSecondaryInverse: color.lightest,
+    colorSecondaryDark: "#00cae6",
+    colorSecondaryLight: "#67ecff",
 
+    colorTertiary: "#c3cbd4",
+    colorTertiaryInverse: "#3a3c3f",
+    colorTertiaryDark: "#afb6be",
+    colorTertiaryLight: "#cfd5dc",
+
+    colorFocus: "#0d59ff",
     disabledColor: "#36393c",
     disabledTextColor: "#5a5f64",
 
@@ -249,7 +276,7 @@ const dark: ThemeVars = {
     colorDangerDark: color.negativeDark,
     colorDangerLight: color.negativeLight,
 
-    defaultShadow: "#0000002e 1px 1px 2px 1px",
+    defaultShadow: "#ffffff2a -2px 2px 6px 1px",
     primaryShadow: "#ff47852e 1px 1px 2px 1px",
     focusShadow: "#1EA7FD2e 1px 1px 2px 1px",
     appBg: "#2f2f2f",
@@ -258,9 +285,11 @@ const dark: ThemeVars = {
     appBorderRadius: 4,
     fontBase: typography.fonts.base,
     fontCode: typography.fonts.mono,
+
     textColor: color.lightest,
     textInverseColor: color.darkest,
     textMutedColor: color.mediumDark,
+
     barTextColor: "#999999",
     barSelectedColor: color.secondary,
     barBg: color.darkest,
