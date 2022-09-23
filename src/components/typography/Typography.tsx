@@ -7,7 +7,18 @@ export interface TypographyProps {
     noMargin?: boolean
     borderBottom?: boolean
     fontCode?: boolean
-    color?: "primary" | "secondary" | "primaryInverse" | "text" | "textInverse" | "textMuted" | "danger" | "disabled"
+    color?:
+        | "primary"
+        | "secondary"
+        | "tertiary"
+        | "primaryInverse"
+        | "secondaryInverse"
+        | "tertiaryInverse"
+        | "text"
+        | "textInverse"
+        | "textMuted"
+        | "danger"
+        | "disabled"
     weight?: "regular" | "bold" | "bolder" | "black"
     align?: "center" | "left" | "right"
 }
@@ -48,6 +59,30 @@ const Common = css<TypographyProps>`
         `}
 
     ${({ color, theme }) =>
+        color === "secondary" &&
+        css`
+            color: ${theme.colorSecondary};
+        `}
+
+    ${({ color, theme }) =>
+        color === "secondaryInverse" &&
+        css`
+            color: ${theme.colorSecondaryInverse};
+        `}
+
+    ${({ color, theme }) =>
+        color === "tertiary" &&
+        css`
+            color: ${theme.colorTertiary};
+        `}
+
+    ${({ color, theme }) =>
+        color === "tertiaryInverse" &&
+        css`
+            color: ${theme.colorTertiaryInverse};
+        `}
+
+    ${({ color, theme }) =>
         color === "text" &&
         css`
             color: ${theme.textColor};
@@ -60,11 +95,6 @@ const Common = css<TypographyProps>`
             color: ${theme.textInverseColor};
         `}
 
-    ${({ color, theme }) =>
-        color === "secondary" &&
-        css`
-            color: ${theme.colorSecondary};
-        `}
 
     ${({ color, theme }) =>
         color === "textMuted" &&
