@@ -31,6 +31,7 @@ export interface ThemeVars {
     inputBg: string
     inputBorder: string
     inputTextColor: string
+    labelColor: string
     borderRadius: string
     letterSpace: string
     letterSpaceCaps: string
@@ -44,6 +45,7 @@ export interface ThemeVars {
     weight: {
         regular: number
         bold: number
+        bolder: number
         black: number
     }
 }
@@ -146,7 +148,8 @@ const typography = {
     },
     weight: {
         regular: 400,
-        bold: 700,
+        bold: 600,
+        bolder: 700,
         black: 900,
     },
 }
@@ -159,7 +162,7 @@ const common = {
     lineHeight: [1, 1.125, 1.25, 1.5],
     fontSize: "1rem",
     fontSizeSmall: "0.8rem",
-    fontSizeLabel: "1rem",
+    fontSizeLabel: "0.8rem",
     fontSizeHeading: ["1.1rem", "1.3rem", "1.5rem", "1.8rem", "3rem", "4.25rem"].reverse(),
     space: [
         "0",
@@ -190,11 +193,11 @@ const light: ThemeVars = {
     colorPrimaryDark: "#f3a600",
     colorPrimaryLight: "#ffbb27",
 
-    colorSecondary: "#B4BEC9",
+    colorSecondary: "#1BA0B3",
     colorFocus: "#0d59ff",
 
-    disabledColor: "#D9D9D9",
-    disabledTextColor: "#a6a4a4",
+    disabledColor: "#c3cbd4",
+    disabledTextColor: "#96a4b4",
 
     colorDanger: color.negative,
     colorDangerInverse: color.lightest,
@@ -221,9 +224,10 @@ const light: ThemeVars = {
     barSelectedColor: color.secondary,
     barBg: color.lightest,
 
-    inputBg: color.lightest,
-    inputBorder: color.border,
+    inputBg: color.light,
+    inputBorder: "#CACACA",
     inputTextColor: color.darkest,
+    labelColor: "#3f3f3f",
 }
 
 const dark: ThemeVars = {
@@ -234,11 +238,11 @@ const dark: ThemeVars = {
     colorPrimaryDark: "#f3a600",
     colorPrimaryLight: "#ffbb27",
 
-    colorSecondary: "#B4BEC9",
+    colorSecondary: "#1AE3FF",
     colorFocus: "#0d59ff",
 
-    disabledColor: "#BFBFBF",
-    disabledTextColor: "#4C5958",
+    disabledColor: "#36393c",
+    disabledTextColor: "#5a5f64",
 
     colorDanger: color.negative,
     colorDangerInverse: color.lightest,
@@ -261,8 +265,9 @@ const dark: ThemeVars = {
     barSelectedColor: color.secondary,
     barBg: color.darkest,
     inputBg: "#3f3f3f",
-    inputBorder: "rgba(0,0,0,.3)",
+    inputBorder: "#878787",
     inputTextColor: color.lightest,
+    labelColor: "#CACACA",
 }
 
 export const themes = {
